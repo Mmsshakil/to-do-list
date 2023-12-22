@@ -58,16 +58,16 @@ const PreviousTask = () => {
 
     return (
         <div className=" flex flex-col justify-center items-center mx-auto">
-            <h1>Total Task: {tasks.length}</h1>
+            <h1 className="text-lg font-bold">Total Task: {tasks.length}</h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
                 {
                     tasks?.map(task => <div key={task._id} className="card w-96 bg-base-100 shadow-xl">
                         <div className="p-4 flex flex-col justify-center items-center">
                             <h2 className="card-title">Title: {task.title}</h2>
                             <p>Description: {task.descriptions}</p>
                             <p className="font-bold">Level: {task.level}</p>
-                            <div className="flex justify-center items-center font-semibold">
+                            <div className="flex justify-center gap-3 items-center font-semibold">
                                 <p>Date: {task.date}</p>
                                 <p>Time: {task.time}</p>
                             </div>
