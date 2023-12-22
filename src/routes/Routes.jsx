@@ -6,8 +6,11 @@ import Contact from '../components/Contact';
 import Login from '../components/Login';
 import Home from '../components/Home';
 import Register from '../components/Register';
-import Dashboard from '../dashboardPages/Dashboard';
 import PrivateRoute from './PrivateRoute';
+import Dashboard from '../layout/Dashboard';
+import CreateNewTask from '../dashboardPages/CreateNewTask';
+import PreviousTask from '../dashboardPages/PreviousTask';
+import UpdateTask from '../dashboardPages/UpdateTask';
 
 const router = createBrowserRouter([
     {
@@ -39,7 +42,22 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <PreviousTask></PreviousTask>
+            },
+            {
+                path: '/dashboard/createNewTasks',
+                element: <CreateNewTask></CreateNewTask>
+            },
+            {
+                path: '/dashboard/updateTask/:id',
+                element: <PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/taskOne/${params.id}`)
+            },
+        ]
     }
 ]);
 
