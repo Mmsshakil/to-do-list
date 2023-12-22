@@ -29,7 +29,14 @@ const Navbar = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/Guidline">Guidline</Link></li>
             <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/register">Registration</Link></li>
+
+            {
+                user ?
+                    <li></li> :
+                    <li><Link to="/register">Registration</Link></li>
+            }
+
+
         </>
     return (
 

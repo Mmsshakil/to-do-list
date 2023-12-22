@@ -6,7 +6,8 @@ import Contact from '../components/Contact';
 import Login from '../components/Login';
 import Home from '../components/Home';
 import Register from '../components/Register';
-import Dashboard from '../components/Dashboard';
+import Dashboard from '../dashboardPages/Dashboard';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -33,13 +34,13 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
-            },
-            {
-                path: '/dashboard',
-                element: <Dashboard></Dashboard>
             }
         ]
     },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+    }
 ]);
 
 export default router;
